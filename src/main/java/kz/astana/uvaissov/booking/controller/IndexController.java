@@ -30,14 +30,14 @@ public class IndexController {
 
     @RequestMapping(value = {"/","/workspace"}, method = RequestMethod.GET)
     public String workspace(Model model) {
-    	UserDetails userDetails =
-    			 (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-    	System.out.println(userDetails.getUsername());
-    	System.out.println(userDetails.getPassword());
-    	Collection<GrantedAuthority> collect  = (Collection<GrantedAuthority>) userDetails.getAuthorities();
-    	for(GrantedAuthority col : collect) {
-    		System.out.println(col.getAuthority());
-    	}
+//    	UserDetails userDetails =
+//    			 (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//    	System.out.println(userDetails.getUsername());
+//    	System.out.println(userDetails.getPassword());
+//    	Collection<GrantedAuthority> collect  = (Collection<GrantedAuthority>) userDetails.getAuthorities();
+//    	for(GrantedAuthority col : collect) {
+//    		System.out.println(col.getAuthority());
+//    	}
         return "workspace";
     }
     
