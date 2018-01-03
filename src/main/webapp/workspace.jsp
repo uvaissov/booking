@@ -28,9 +28,13 @@
 <div class="container">
 
     <c:if test="${pageContext.request.userPrincipal.name != null}">
-        
+        <form id="logoutForm" method="POST" action="${contextPath}/logout">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form>
         <h2>Рабочее место ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Выйти</a></h2>
-
+		<sec:authorize access="hasRole('ROLE_DEVELOPERS_BOOK') or hasRole('ROLE_DEVELOPERS')">
+				        	<div>2323</div>
+		</sec:authorize>
     </c:if>
 
 </div>

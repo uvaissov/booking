@@ -1,6 +1,11 @@
 package kz.astana.uvaissov.booking.controller;
 
 
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +30,14 @@ public class IndexController {
 
     @RequestMapping(value = {"/","/workspace"}, method = RequestMethod.GET)
     public String workspace(Model model) {
-    	
+    	UserDetails userDetails =
+    			 (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	System.out.println(userDetails.getUsername());
+    	System.out.println(userDetails.getPassword());
+    	Collection<GrantedAuthority> collect  = (Collection<GrantedAuthority>) userDetails.getAuthorities();
+    	for(GrantedAuthority col : collect) {
+    		System.out.println(col.getAuthority());
+    	}
         return "workspace";
     }
     
