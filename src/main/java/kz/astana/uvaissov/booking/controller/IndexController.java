@@ -1,7 +1,9 @@
 package kz.astana.uvaissov.booking.controller;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -38,6 +40,15 @@ public class IndexController {
 //    	for(GrantedAuthority col : collect) {
 //    		System.out.println(col.getAuthority());
 //    	}
+    	if(!model.containsAttribute("navigationList")) {
+    		List<String> navigationList = new ArrayList<>();
+	    	navigationList.add("Calendar");
+	    	navigationList.add("Clients");
+	    	navigationList.add("Employers");
+	    	model.addAttribute("navigationList",navigationList);
+    	} else {
+    		System.out.println("is not empty");
+    	}
         return "workspace";
     }
     
