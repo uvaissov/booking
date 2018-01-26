@@ -1,11 +1,16 @@
 app.controller('MainCtrl', MainCtrl);
-
 function MainCtrl () {
   var main = this; 
-  main.title = 'Developer';
-  main.navigationList = [] ;
-  alert(/*[[${userName}]]*/);
+  main.pageUrl = contentPrefixPath+"calendar"
+  main.navigationList = navItems ;
   main.changeContent=function(item){
-	  main.title =  item.currentTarget.attributes['data-page'].value;
+	  angular.forEach(main.navigationList, function(value) {
+		  if(value.active===true){
+			  value.active=false;
+		  }
+		});
+	  
+	  item.active=true;
+	  main.pageUrl = contentPrefixPath+item.itemPage
   }
 };

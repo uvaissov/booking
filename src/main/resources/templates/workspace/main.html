@@ -7,11 +7,19 @@
 	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script th:src="@{/js/bootstrap.min.js}"></script>
+  	<script th:src="@{/js/angular.min.js}"></script>
+	<script th:src="@{/js/project/app/app.js}"></script>
+	<script th:src="@{/js/project/controller/MainCtrl.js}"></script>
+	<script th:src="@{/js/project/controller/CalendarCtrl.js}"></script>
+	  	<script th:inline="javascript">
+		/*<![CDATA[*/ 
+			var navItems = [[${navItems}]];
+		/*]]>*/
+	</script>
 </head>
-<body ng-controller="MainCtrl as main">
+<body ng-cloak ng-controller="MainCtrl as main">
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -22,12 +30,11 @@
       <a class="navbar-brand" th:utext="${userName}"></a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-      	<li th:each="section : ${navItems}" th:class="${section.active} ? active "  >
-        	<a ng-click="main.changeContent($event)" th:attr="data-page=${section.itemPage}"> <span  th:utext="${section.itemName}"></span>
-        		<span th:if="${section.active}" class="sr-only">(current)</span>
+      	<li ng-repeat="section in main.navigationList" ng-class="{'active':section.active}"  >
+        	<a ng-click="main.changeContent(section)" > {{section.itemName}}
+        		<span ng-if="section.active" class="sr-only">(current)</span>
         	</a>
     	</li>
         <li class="dropdown">
@@ -49,11 +56,8 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<div class="container">
-{{main.title}}
+<div class="container" ng-include="main.pageUrl">
 </div>
-<script th:src="@{/js/angular.min.js}"></script>
-<script th:src="@{/js/project/app/app.js}"></script>
-<script th:inline="javascript" th:src="@{/js/project/controller/MainCtrl.js}"></script>
+
 </body>
 </html>

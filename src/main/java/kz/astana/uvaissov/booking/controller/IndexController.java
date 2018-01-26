@@ -24,7 +24,7 @@ public class IndexController {
 	private UserService userService;
 	
 
-    @RequestMapping(value = {"/index","/workspace"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/workspace"}, method = RequestMethod.GET)
     public ModelAndView workspace(Model model) {
     	ModelAndView modelAndView = new ModelAndView();
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -32,14 +32,27 @@ public class IndexController {
     	modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
     	
     	List<NavItem> navItems = new ArrayList<NavItem>();
-    	navItems.add(new NavItem("График", "calendar.html", true));
-    	navItems.add(new NavItem("Клиенты", "calendar.html", false));
-    	navItems.add(new NavItem("Услуги", "calendar.html", false));
-    	navItems.add(new NavItem("Склад", "calendar.html", false));
-    	navItems.add(new NavItem("Отчеты", "calendar.html", false));
+    	navItems.add(new NavItem("График", "calendar", true));
+    	navItems.add(new NavItem("Клиенты", "clients", false));
+    	navItems.add(new NavItem("Услуги", "calendar", false));
+    	navItems.add(new NavItem("Склад", "calendar", false));
+    	navItems.add(new NavItem("Отчеты", "reports", false));
     	modelAndView.addObject("navItems",navItems);
-		modelAndView.setViewName("index");
+		modelAndView.setViewName("/workspace/main");
 		return modelAndView;
+    }
+    
+    @RequestMapping("/workspace/container/calendar")
+    public String calendar(){
+    	return "/workspace/container/calendar";
+    }
+    @RequestMapping("/workspace/container/clients")
+    public String clients(){
+    	return "/workspace/container/clients";
+    }
+    @RequestMapping("/workspace/container/reports")
+    public String reports(){
+    	return "/workspace/container/reports";
     }
     
    
