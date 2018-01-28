@@ -1,1 +1,33 @@
-<div ng-controller="CalendarCtrl as calendar">Hello Calendar</div>
+<script src="//cdn.rawgit.com/pc035860/angular-highlightjs/v0.6.1/build/angular-highlightjs.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script>
+<div ng-controller="CalendarCtrl as vm" class="panel panel-primary">
+            <div class="panel-heading clearfix">
+                <span class="pull-left">
+                    <div class="btn-group">
+                        <label class="btn btn-primary" ng-model="vm.calConfig.calendarView" btn-radio="'month'">Month</label>
+                        <label class="btn btn-primary" ng-model="vm.calConfig.calendarView" btn-radio="'week'">Week</label>
+                        <label class="btn btn-primary" ng-model="vm.calConfig.calendarView" btn-radio="'day'">Day</label>
+                    </div>
+                </span>
+            </div>
+            <div class="panel-body">
+                 <mwl-calendar
+                    events="vm.events"
+                    view="vm.calConfig.calendarView"
+                    view-title="vm.calendarTitle"
+                    current-day="vm.calConfig.calendarDay"
+                    view-date="vm.viewDate"                    
+                    on-event-click="vm.eventClicked(calendarEvent)"
+                    edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+                    delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+                    on-event-times-changed="vm.eventTimesChanged(calendarEvent); calendarEvent.startsAt = calendarNewEventStart; calendarEvent.endsAt = calendarNewEventEnd"
+                    on-edit-event-click="eventEdited(calendarEvent)"
+                    on-delete-event-click="eventDeleted(calendarEvent)"
+                    auto-open="true">
+                </mwl-calendar>
+            </div>
+</div>
+
+
+    
