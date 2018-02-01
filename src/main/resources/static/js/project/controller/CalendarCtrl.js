@@ -4,7 +4,16 @@ function CalendarCtrl (moment) {
   var vm = this; 
   vm.viewDate = new Date();
   vm.calendarTitle='asdasd';
-  
+  vm.dayViewTimePositionOffset = 0;
+  var left = function(dayEvent){
+     	return dayEvent.left/10*2;
+	 // return dayEvent.left;
+  };
+  vm.viewWidth1  = function(dayEvent){
+	  console.log(dayEvent);
+     	console.log(vm);
+	  return vm.viewWidth;
+  };
   vm.events = [
     {
       title: 'My event title', 
@@ -13,15 +22,38 @@ function CalendarCtrl (moment) {
       endsAt: moment().hours(6).minutes(0).toDate(), // BREAKING CHANGE
       //actions:actions,
       draggable: true,
+      color: { // can also be calendarConfig.colorTypes.warning for shortcuts to the deprecated event types
+          primary: '#e3bc08', // the primary event color (should be darker than secondary)
+          secondary: '#fdf1ba' // the secondary event color (should be lighter than primary)
+        },
+      left : left,
       resizable: true
-    },
+    },{
+        title: 'My event title', 
+        type: 'info',
+        startsAt: moment().hours(5).minutes(0).toDate(), // BREAKING CHANGE
+        endsAt: moment().hours(6).minutes(0).toDate(), // BREAKING CHANGE
+        //actions:actions,
+        draggable: true,
+        color: { // can also be calendarConfig.colorTypes.warning for shortcuts to the deprecated event types
+            primary: '#e3bc08', // the primary event color (should be darker than secondary)
+            secondary: '#fdf1ba' // the secondary event color (should be lighter than primary)
+          },
+          left : left,
+        resizable: true
+      },
     {
         title: 'My event title1', 
         type: 'info',
-        startsAt: moment().hours(6).minutes(0).toDate(), // BREAKING CHANGE
+        startsAt: moment().hours(5).minutes(0).toDate(), // BREAKING CHANGE
         endsAt: moment().hours(6).minutes(30).toDate(), // BREAKING CHANGE
         //actions:actions,
         draggable: true,
+        left : left,
+        color: { // can also be calendarConfig.colorTypes.warning for shortcuts to the deprecated event types
+            primary: '#e3bc08', // the primary event color (should be darker than secondary)
+            secondary: '#fdf1ba' // the secondary event color (should be lighter than primary)
+          },
         resizable: true
       }
   ];
