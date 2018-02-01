@@ -10,13 +10,17 @@
   	<script th:src="@{/js/bootstrap.min.js}"></script>
   	<script th:src="@{/js/angular.min.js}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script>
     <script src="//cdn.jsdelivr.net/angular.bootstrap/0.13.0/ui-bootstrap-tpls.min.js"></script>
   	<script th:src="@{/js/angular-bootstrap-calendar.min.js}"></script>
 	<script th:src="@{/js/angular-bootstrap-calendar-tpls.min.js}"></script>
   	<link rel="stylesheet" th:href="@{/css/angular-bootstrap-calendar.min.css}">
+  	<script src="//cdn.rawgit.com/pc035860/angular-highlightjs/v0.6.1/build/angular-highlightjs.min.js"></script>
+  	
 	<script th:src="@{/js/project/app/app.js}"></script>
 	<script th:src="@{/js/project/controller/MainCtrl.js}"></script>
 	<script th:src="@{/js/project/controller/CalendarCtrl.js}"></script>
+	<script th:src="@{/js/helper.js}"></script>
 	  	<script th:inline="javascript">
 		/*<![CDATA[*/ 
 			var navItems = [[${navItems}]];
@@ -62,8 +66,25 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<div class="container" ng-include="main.pageUrl">
+
+<div class="container" >
+<div class="panel-heading clearfix">
+                <span class="pull-left">
+                    <div class="btn-group">
+                        <label class="btn btn-primary" ng-model="main.calConfig.calendarView" btn-radio="'month'">Month</label>
+                        <label class="btn btn-primary" ng-model="main.calConfig.calendarView" btn-radio="'week'">Week</label>
+                        <label class="btn btn-primary" ng-model="main.calConfig.calendarView" btn-radio="'day'">Day</label>
+                    </div>
+                </span>
+            </div>
+            <div class="panel-body row">
+                 <div class="col-md-4" ng-include="main.pageUrl"></div>
+				<div class="col-md-4" ng-include="main.pageUrl"></div>
+				<div class="col-md-4" ng-include="main.pageUrl"></div>
+            </div>
+	
 </div>
+
 
 </body>
 </html>
