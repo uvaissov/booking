@@ -2,3 +2,8 @@
 .calendar_row_style{
 	 height: 17px !important;
 }
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}

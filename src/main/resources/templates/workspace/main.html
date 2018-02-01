@@ -67,7 +67,7 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container" >
+<div class="container-fluid" >
 <div class="panel-heading clearfix">
                 <span class="pull-left">
                     <div class="btn-group">
@@ -77,10 +77,22 @@
                     </div>
                 </span>
             </div>
-            <div class="panel-body row-fluid col-md-12">
-                 <div class="col-md-4" ng-include="main.pageUrl"></div>
-				<div class="col-md-4" ng-include="main.pageUrl"></div>
-				<div class="col-md-4" ng-include="main.pageUrl"></div>
+            <div class="panel-body row" >
+            	<div class="col-md-10" style="overflow-y:auto;">
+            	<table style="width: 100%;">
+            	<tr>
+	            	<td class="nopadding" style="min-width: 250px;" ng-include="main.pageUrl"></td>
+					<td class="nopadding" style="min-width: 250px;" ng-include="main.pageUrl"></td>
+					<td class="nopadding" style="min-width: 250px;" ng-include="main.pageUrl"></td>
+					<td class="nopadding" style="min-width: 250px;" ng-include="main.pageUrl"></td>
+					<td class="nopadding" style="min-width: 250px;" ng-include="main.pageUrl"></td>
+					<td class="nopadding" style="min-width: 250px;" ng-include="main.pageUrl"></td>
+					<td class="nopadding" style="min-width: 250px;" ng-include="main.pageUrl"></td>
+					</tr>
+				</table>
+	            </div>
+                <div class="col-md-2">
+                </div>
             </div>
 	
 </div>

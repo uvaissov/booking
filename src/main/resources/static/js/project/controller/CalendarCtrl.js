@@ -9,11 +9,6 @@ function CalendarCtrl (moment) {
      	return dayEvent.left/10*2;
 	 // return dayEvent.left;
   };
-  vm.viewWidth1  = function(dayEvent){
-	  console.log(dayEvent);
-     	console.log(vm);
-	  return vm.viewWidth;
-  };
   vm.events = [
     {
       title: 'My event title', 
@@ -26,8 +21,7 @@ function CalendarCtrl (moment) {
           primary: '#e3bc08', // the primary event color (should be darker than secondary)
           secondary: '#fdf1ba' // the secondary event color (should be lighter than primary)
         },
-      left : left,
-      resizable: true
+      left : left
     },{
         title: 'My event title', 
         type: 'info',
@@ -39,8 +33,7 @@ function CalendarCtrl (moment) {
             primary: '#e3bc08', // the primary event color (should be darker than secondary)
             secondary: '#fdf1ba' // the secondary event color (should be lighter than primary)
           },
-          left : left,
-        resizable: true
+          left : left
       },
     {
         title: 'My event title1', 
@@ -53,8 +46,7 @@ function CalendarCtrl (moment) {
         color: { // can also be calendarConfig.colorTypes.warning for shortcuts to the deprecated event types
             primary: '#e3bc08', // the primary event color (should be darker than secondary)
             secondary: '#fdf1ba' // the secondary event color (should be lighter than primary)
-          },
-        resizable: true
+          }
       }
   ];
   
