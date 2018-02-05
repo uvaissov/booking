@@ -5,9 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Title</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/app.css}" />
-	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<!-- <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  	<script th:src="@{/js/bootstrap.min.js}"></script>
+  	<script th:src="@{/js/bootstrap.min.js}"></script> -->
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   	<script th:src="@{/js/angular.min.js}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.0/moment.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js"></script>
@@ -16,7 +19,6 @@
 	<script th:src="@{/js/angular-bootstrap-calendar-tpls.min.js}"></script>
   	<link rel="stylesheet" th:href="@{/css/angular-bootstrap-calendar.min.css}">
   	<script src="//cdn.rawgit.com/pc035860/angular-highlightjs/v0.6.1/build/angular-highlightjs.min.js"></script>
-  	
 	<script th:src="@{/js/project/app/app.js}"></script>
 	<script th:src="@{/js/project/controller/MainCtrl.js}"></script>
 	<script th:src="@{/js/project/controller/CalendarCtrl.js}"></script>
@@ -42,8 +44,8 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-      	<li ng-repeat="section in main.navigationList" ng-class="{'active':section.active}"  >
-        	<a ng-click="main.changeContent(section)" > {{section.itemName}}
+      	<li ng-repeat="section in main.navigationList | filter:{ position: 'left' }" ng-class="{'active':section.active}" >
+        	<a ng-click="main.changeContent(section)"  > {{section.itemName}}
         		<span ng-if="section.active" class="sr-only">(current)</span>
         	</a>
     	</li>
@@ -60,7 +62,14 @@
           </ul>
         </li>
       </ul>
+      <span class="glyphicon glyphicon-wrenc"></span>
       <ul class="nav navbar-nav navbar-right">
+      	<li ng-repeat="section in main.navigationList | filter:{ position: 'right' }" ng-class="{'active':section.active}" >
+        	<a ng-click="main.changeContent(section)" >
+        	{{section.itemName}}
+        		<span ng-if="section.active" class="sr-only">(current)</span>
+        	</a>
+    	</li>
         <li><a href="/login?logout">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -69,5 +78,6 @@
 
 <div class="container-fluid" ng-include="main.pageUrl" >
 </div>
+
 </body>
 </html>
