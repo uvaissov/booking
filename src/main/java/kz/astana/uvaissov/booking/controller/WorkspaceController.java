@@ -40,7 +40,7 @@ public class WorkspaceController {
     	navItems.add(new NavItem("Отчеты", "reports", false,"left"));
     	navItems.add(new NavItem("Настройки", "setting", false,"right"));
     	modelAndView.addObject("navItems",navItems);
-		modelAndView.setViewName("/workspace/main");
+		modelAndView.setViewName("/workspace/index");
 		return modelAndView;
     }
     
@@ -59,7 +59,7 @@ public class WorkspaceController {
     
     @RequestMapping("/container/setting")
     public String setting(){
-    	return "/workspace/container/setting";
+    	return "redirect:/setting.do";
     }
    
 }
