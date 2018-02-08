@@ -1,6 +1,7 @@
 app.controller('MainCtrl', MainCtrl);
 function MainCtrl () {
   var main = this; 
+  var contentPrefixPath = "workspace/container/"; 
   main.pageUrl = contentPrefixPath+"calendar"
   main.navigationList = navItems ;
   main.calConfig = {

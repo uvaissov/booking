@@ -40,7 +40,7 @@ public class WorkspaceController {
     	navItems.add(new NavItem("Отчеты", "reports", false,"left"));
     	navItems.add(new NavItem("Настройки", "setting", false,"right"));
     	modelAndView.addObject("navItems",navItems);
-		modelAndView.setViewName("/workspace/index");
+		modelAndView.setViewName("/workspace/main");
 		return modelAndView;
     }
     
