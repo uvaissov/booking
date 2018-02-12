@@ -1,9 +1,15 @@
 app.controller('MainCtrl', MainCtrl);
 function MainCtrl () {
   var main = this; 
-  var contentPrefixPath = "workspace/container/"; 
-  main.pageUrl = contentPrefixPath+"calendar"
+  var contentPrefixPath = "workspace/container/";
   main.navigationList = navItems ;
+  //init renderPage
+  angular.forEach(main.navigationList, function(value) {
+	  if(value.active===true){
+		  main.pageUrl = contentPrefixPath+value.itemPage
+	  }
+  });
+  
   main.calConfig = {
           calendarView : 'day',
           calendarDay : new Date()

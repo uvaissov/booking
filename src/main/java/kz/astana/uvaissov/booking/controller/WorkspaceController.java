@@ -33,12 +33,12 @@ public class WorkspaceController {
     	modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
     	
     	List<NavItem> navItems = new ArrayList<NavItem>();
-    	navItems.add(new NavItem("График", "calendar", true,"left"));
+    	navItems.add(new NavItem("График", "calendar", false,"left"));
     	navItems.add(new NavItem("Клиенты", "clients", false,"left"));
     	navItems.add(new NavItem("Услуги", "calendar", false,"left"));
     	navItems.add(new NavItem("Склад", "calendar", false,"left"));
     	navItems.add(new NavItem("Отчеты", "reports", false,"left"));
-    	navItems.add(new NavItem("Настройки", "setting", false,"right"));
+    	navItems.add(new NavItem("Настройки", "setting", true,"right"));
     	modelAndView.addObject("navItems",navItems);
 		modelAndView.setViewName("/workspace/main");
 		return modelAndView;
