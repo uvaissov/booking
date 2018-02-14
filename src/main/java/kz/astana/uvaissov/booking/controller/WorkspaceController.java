@@ -30,6 +30,7 @@ public class WorkspaceController {
     	ModelAndView modelAndView = new ModelAndView();
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     	User user = userService.findUserByEmail(auth.getName());
+    	modelAndView.addObject("brand", "My Brand");
     	modelAndView.addObject("userName", user.getName() + " " + user.getLastName());
     	
     	List<NavItem> navItems = new ArrayList<NavItem>();

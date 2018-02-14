@@ -1,28 +1,128 @@
 <div ng-controller="Setting_MainInfoCtrl as mainInfo">
-	<div class="form-group row">
-		<label for="example-text-input" class="col-sm-1 col-form-label">Наименование</label>
-		<div class="col-sm-5">
-			<input class="form-control" type="text" ng-model="mainInfo.info.name"
-				id="example-text-input">
+	<div class="row">
+		<div class="col-md-9">
+			<div class="form-group form-row">
+				<label for="inputName" class="col-md-2 col-form-label">Наименование</label>
+				<div class="col-md-7">
+					<input class="form-control" type="text" ng-model="mainInfo.info.name" id="inputName">
+				</div>
+			</div>
+			<div class="form-group form-row">
+			      <label class="col-md-1  col-form-label" for="inputCountry">Страна</label>
+			      <div class=" col-md-3">
+				      <select id="inputCountry" class="form-control">
+				        <option selected>Казахстан</option>
+				        <option>Россия</option>
+				      </select>
+			      </div>
+			      <label class="col-md-1  col-form-label" for="inputState">Город</label>
+			      <div class=" col-md-4">
+				      <select id="inputState" class="form-control">
+				        <option selected>Астана</option>
+				        <option>Алматы</option>
+				      </select>
+			      </div>
+			      
+		  	</div>
+		  	<div class="form-group form-row">
+		  		<label class="col-md-1 col-form-label" for="inputAdress">Адрес</label>
+			      <div class=" col-md-8">
+			      	<input type="text" class="form-control" id="inputAdress">
+			      </div>
+		  	</div>
+		  	
+		  	
+		  	
+			<h6>Информация о руководителе</h6>
+			<div class="form-group form-row">
+				<label for="inputLastname" class="col-md-1 col-form-label">Фамилия</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="mainInfo.info.lastName" id="inputLastname">
+				</div>
+				<label for="inputFirstName" class="col-md-1 col-form-label">Имя</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="mainInfo.info.firstName" id="inputFirstName">
+				</div>
+		
+				<label for="inputSubName" class="col-md-1 col-form-label">Отчество</label>
+				<div class="col-md-2"> 
+					<input class="form-control" type="text" ng-model="mainInfo.info.subName" id="inputSubName">
+				</div>
+				
+			</div>
+			<div class="form-group form-row">
+				<label for="inputBirthDay" class="col-md-1 col-form-label">Дата рождения</label>
+				<div class="col-md-2"> 
+					<input class="form-control" type="text" ng-model="mainInfo.info.birthDay" id="inputBirthDay">
+				</div>
+			</div>
+			
+			<h6>Банковские реквезиты</h6>
+			<div class="form-group form-row">
+				<label for="inputBank" class="col-md-1 col-form-label">Банк</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="mainInfo.info.bank.name" id="inputBank">
+				</div>
+				<label for="inputBik" class="col-md-1 col-form-label">БИК</label>
+				<div class="col-md-2"> 
+					<input class="form-control" type="text" ng-model="mainInfo.info.bank.bik" id="inputBik">
+				</div>
+				<label for="inputIik" class="col-md-1 col-form-label">ИИК</label>
+				<div class="col-md-2"> 
+					<input class="form-control" type="text" ng-model="mainInfo.info.bank.iik" id="inputIik">
+				</div>
+			</div>
+			<h6>Информация о организации</h6>
+			<div class="form-group form-row">
+				<label for="inputPhone" class="col-md-1 col-form-label">Телефон</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="mainInfo.info.phone" id="inputBank">
+				</div>
+				<label for="inputiinBin" class="col-md-1 col-form-label">ИИН/БИН</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="mainInfo.info.bank.iinBin" id="inputiinBin">
+				</div>
+				
+			</div>
+			<div class="form-group form-row">
+			<label for="inputLicenseNum" class="col-md-1 col-form-label">Лицензия №</label>
+				<div class="col-md-2">
+					<input class="form-control" type="text" ng-model="mainInfo.info.licNum" id="inputLicenseNum">
+				</div>
+				<label for="inputLicenseDate" class="col-md-1 col-form-label">Лицензия выдана</label>
+				<div class="col-md-2"> 
+					<input class="form-control" type="text" ng-model="mainInfo.info.licDate" id="inputLicenseDate">
+				</div>
+			</div>
+			 <button class="btn btn-primary disabled" type="submit">Сохранить</button>
+		</div>
+		<div class="col-md-3">
+			<table class="table border">
+			  <tbody>
+			    <tr>
+			      <td>Тариф</td>
+			      <td>Free</td>
+			    </tr>
+			    <tr>
+			      <td>Баланс</td>
+			      <td>1745 тенге</td>
+			    </tr>
+			    <tr>
+			      <td>SMS</td>
+			      <td>1578 SMS</td>
+			    </tr>
+			    <tr>
+			      <td>Ссылка на виджет</td>
+			      <td>http://275online.kbooking.kz</td>
+			    </tr>
+			  </tbody>
+			</table>
 		</div>
 	</div>
-	<div class="form-group row ">
-		<label for="example-text-input" class="col-sm-1 col-form-label">Фамилия</label>
-		<div class="col-sm-3">
-			<input class="form-control" type="text" ng-model="mainInfo.info.lastName"
-				id="example-text-input">
-		</div>
-		<label for="example-text-input" class="col-sm-1 col-form-label">Имя</label>
-		<div class="col-sm-3">
-			<input class="form-control" type="text" ng-model="mainInfo.info.firstName"
-				id="example-text-input">
-		</div>
 
-		<label for="example-text-input" class="col-sm-1 col-form-label">Отчество</label>
-		<div class="col-sm-3">
-			<input class="form-control" type="text" ng-model="mainInfo.info.subName"
-				id="example-text-input">
-		</div>
-	</div>
 
+	
+	
+	
+	
 </div>
