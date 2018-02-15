@@ -1,0 +1,28 @@
+<div ng-controller="Setting_PositionCtrl as pos">
+	<div ng-switch on="pos.type">
+		<div class="animate-switch" ng-switch-when="add">
+			<div class="">
+				<button class="btn btn-primary" ng-click="pos.switchContent('list')">К списку</button>
+			</div>
+		</div>
+		<div class="animate-switch" ng-switch-when="list">
+			<div class="">
+				<button class="btn btn-primary" ng-click="pos.switchContent('add')"> + Добавить должность</button>
+			</div>
+			<div class="pt-2">
+				<table class="table">
+				  <thead class="thead-default">
+				    <tr>
+				      <th>Наименование</th>
+				      <th>Описание</th>
+				      <th></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <!-- repeator tr -->
+				  </tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

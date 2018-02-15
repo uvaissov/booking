@@ -32,9 +32,9 @@ public class SettingController {
 
 		List<NavItem> navItems = new ArrayList<NavItem>();
 		navItems.add(new NavItem("Основная информация", "mainInfo", true, "left"));
-		navItems.add(new NavItem("Сотрудник", "employees-list", false, "left"));
-		navItems.add(new NavItem("Должности", "position-list", false, "left"));
-		navItems.add(new NavItem("Расписание", "shedulle-list", false, "left"));
+		navItems.add(new NavItem("Сотрудник", "employees", false, "left"));
+		navItems.add(new NavItem("Должности", "position", false, "left"));
+		navItems.add(new NavItem("Расписание", "shedulle", false, "left"));
 		modelAndView.addObject("tabsItems", navItems);
 		modelAndView.setViewName("/workspace/container/setting/setting");
 		return modelAndView;
@@ -44,24 +44,17 @@ public class SettingController {
 	 public String mainInfo(){
 	    	return "/workspace/container/setting/mainInfo";
 	 }
-	 @RequestMapping("/employees-list")
+	 @RequestMapping("/employees")
 	 public String employees_list(){
-	    	return "/workspace/container/setting/employees/list";
+	    	return "/workspace/container/setting/employees";
 	 }
-	 @RequestMapping("/employees-add")
-	 public String employees_add(){
-		 return "/workspace/container/setting/employees/add";
-	 }
-	 @RequestMapping("/position-list")
+	 @RequestMapping("/position")
 	 public String position_list(){
-		 return "/workspace/container/setting/employees/list";
+		 return "/workspace/container/setting/position";
 	 }
-	 @RequestMapping("/position-add")
-	 public String position_add(){
-		 return "/workspace/container/setting/employees/add";
-	 }
-	 @RequestMapping("/shedulle-list")
+	 
+	 @RequestMapping("/shedulle")
 	 public String shedulle_list(){
-		 return "/workspace/container/setting/employees/list";
+		 return "/workspace/container/setting/sheduller";
 	 }
 }
