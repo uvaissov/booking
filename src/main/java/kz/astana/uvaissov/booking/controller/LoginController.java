@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import kz.astana.uvaissov.booking.model.User;
+import kz.astana.uvaissov.booking.entity.User;
 import kz.astana.uvaissov.booking.service.UserService;
 
 

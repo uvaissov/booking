@@ -1,4 +1,4 @@
-package kz.astana.uvaissov.booking.model;
+package kz.astana.uvaissov.booking.entity;
 import java.util.Set;
 
 import javax.persistence.CascadeType;

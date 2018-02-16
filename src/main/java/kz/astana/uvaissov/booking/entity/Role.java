@@ -1,4 +1,4 @@
-package kz.astana.uvaissov.booking.model;
+package kz.astana.uvaissov.booking.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

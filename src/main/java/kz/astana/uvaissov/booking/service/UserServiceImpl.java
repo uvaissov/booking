@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import kz.astana.uvaissov.booking.model.Role;
-import kz.astana.uvaissov.booking.model.User;
+import kz.astana.uvaissov.booking.entity.Role;
+import kz.astana.uvaissov.booking.entity.User;
 import kz.astana.uvaissov.booking.repository.RoleRepository;
 import kz.astana.uvaissov.booking.repository.UserRepository;
 
