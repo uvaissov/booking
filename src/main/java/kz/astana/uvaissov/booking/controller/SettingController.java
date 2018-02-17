@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import kz.astana.uvaissov.booking.entity.Role;
 import kz.astana.uvaissov.booking.entity.User;
 import kz.astana.uvaissov.booking.service.UserService;
 import kz.astana.uvaissov.booking.workspace.model.NavItem;
@@ -36,16 +37,11 @@ public class SettingController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
-		System.out.println("userName"+ user.getName() + " " + user.getLastName());
+		System.out.println("userName:"+ user.getName() + " " + user.getLastName());
+		for(Role role: user.getRoles()) {
+			System.out.println(role.getRole());
+		}
 		
-		List<NavItem> fromAttrib = (List<NavItem>) session.getAttribute("navItems");
-		if(fromAttrib!=null) {
-		for(NavItem item: fromAttrib) {
-			System.out.println(item.getItemName());
-		}
-		} else {
-			System.out.println("fromAttrib is null");
-		}
 		List<NavItem> navItems = new ArrayList<NavItem>();
 		navItems.add(new NavItem("Основная информация", "mainInfo", true, "left"));
 		navItems.add(new NavItem("Сотрудник", "employees", false, "left"));

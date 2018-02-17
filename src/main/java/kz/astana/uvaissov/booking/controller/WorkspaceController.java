@@ -42,7 +42,6 @@ public class WorkspaceController {
 	@ModelAttribute("client")//Обьявим основной отрибут пользователя
 	public Client getClient(@ModelAttribute("user") User user) {
 		Client client = clientService.findClientByUser(user);
-		System.out.println(client.getName());
 		return client;
 	}
 
