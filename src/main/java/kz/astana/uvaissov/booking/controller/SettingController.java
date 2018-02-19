@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,6 +30,7 @@ import kz.astana.uvaissov.booking.entity.Client;
 import kz.astana.uvaissov.booking.entity.Position;
 import kz.astana.uvaissov.booking.entity.Role;
 import kz.astana.uvaissov.booking.entity.User;
+import kz.astana.uvaissov.booking.repository.GsonHttp;
 import kz.astana.uvaissov.booking.service.PositionService;
 import kz.astana.uvaissov.booking.service.UserService;
 import kz.astana.uvaissov.booking.workspace.model.NavItem;
@@ -43,6 +45,9 @@ public class SettingController {
 
 	@Autowired
 	private PositionService positionService;
+	
+	@Autowired
+	private GsonHttp gson;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView setting(@ModelAttribute("user") User user, HttpSession session) {
@@ -87,7 +92,8 @@ public class SettingController {
 	}
 
 	@PostMapping(name = "/position/add")
-	public ResponseEntity addPosition(@ModelAttribute("client") Client client, @RequestBody Position position) {
+	public ResponseEntity addPosition(@ModelAttribute("client") Client client, @RequestParam(value="position") String positionVal) {
+		Position position = gson.getGson().fromJson(positionVal, Position.class);
 		position.setClientId(client.getId());
 		positionService.savePosition(position);
 		System.out.println(position.getId());
