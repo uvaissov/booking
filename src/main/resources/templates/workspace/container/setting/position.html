@@ -18,6 +18,7 @@
 				      </div>
 			  	</div>
 			  	 <button class="btn btn-primary" type="submit" ng-disabled="FormPositionAdd.$invalid">Сохранить</button>
+			  	 <div ng-show="pos.message">{{pos.message}}</div>
 			</form>
 		</div>
 		<div class="animate-switch" ng-switch-when="list">
@@ -34,10 +35,13 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				  	<tr ng-repeat="positon in pos.positions track by $index">
+				  	<tr ng-repeat="positon in pos.positions">
 				   		<td>{{positon.name}}</td>
 				   		<td>{{positon.description}}</td>
-				   		<td></td>
+				   		<td> 
+				   			<button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Изменить</button>
+				   			<button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Удалить</button> 
+				   		</td>
 				   	</tr>
 				  </tbody>
 				</table>

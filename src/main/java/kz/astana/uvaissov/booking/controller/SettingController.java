@@ -60,68 +60,33 @@ public class SettingController {
 		}
 
 		List<NavItem> navItems = new ArrayList<NavItem>();
-		navItems.add(new NavItem("Основная информация", "mainInfo", true, "left"));
-		navItems.add(new NavItem("Сотрудник", "employees", false, "left"));
-		navItems.add(new NavItem("Должности", "position", false, "left"));
-		navItems.add(new NavItem("Расписание", "shedulle", false, "left"));
+		navItems.add(new NavItem("Основная информация", "mainInfo_page", true, "left"));
+		navItems.add(new NavItem("Сотрудник", "employees_page", false, "left"));
+		navItems.add(new NavItem("Должности", "position_page", false, "left"));
+		navItems.add(new NavItem("Расписание", "shedulle_page", false, "left"));
 		modelAndView.addObject("tabsItems", navItems);
 		modelAndView.setViewName("/workspace/container/setting/setting");
 		return modelAndView;
 	}
 
-	@GetMapping("/mainInfo")
+	@GetMapping("/mainInfo_page")
 	public String mainInfo() {
 		return "/workspace/container/setting/mainInfo";
 	}
 
-	@GetMapping("/employees")
+	@GetMapping("/employees_page")
 	public String employees_list() {
 		return "/workspace/container/setting/employees";
 	}
 
-	@GetMapping("/shedulle")
-	public String shedulle_list() {
+	@GetMapping("/shedulle_page")
+	public String shedulle_page() {
 		return "/workspace/container/setting/sheduller";
 	}
 
-	// Position
-
-	@GetMapping("/position")
-	public String position_list() {
+	@GetMapping("/position_page")
+	public String position_page() {
 		return "/workspace/container/setting/position";
-	}
-
-	@PostMapping(name = "/position/add")
-	public ResponseEntity addPosition(@ModelAttribute("client") Client client, @RequestParam(value="position") String positionVal) {
-		Position position = gson.getGson().fromJson(positionVal, Position.class);
-		position.setClientId(client.getId());
-		positionService.savePosition(position);
-		System.out.println(position.getId());
-		if (null == position.getId()) {
-			return new ResponseEntity("No Customer found for ID ", HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity(position, HttpStatus.OK);
-	}
-
-	@DeleteMapping("/position/delete/{id}")
-	public ResponseEntity deletePosition(@PathVariable Long id) {
-		if (null == null) {
-			return new ResponseEntity("No Customer found for ID " + id, HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity(id, HttpStatus.OK);
-	}
-	
-	@PutMapping("/position/update")
-	public ResponseEntity updateCustomer(@RequestBody Position position) {
-
-		position = positionService.updatePosition(position);
-
-		if (null == position) {
-			return new ResponseEntity("No Customer found for ID " + position.getId()
-			, HttpStatus.NOT_FOUND);
-		}
-
-		return new ResponseEntity(position, HttpStatus.OK);
 	}
 
 }
