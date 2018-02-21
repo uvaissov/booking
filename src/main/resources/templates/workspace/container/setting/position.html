@@ -39,8 +39,8 @@
 				   		<td>{{positon.name}}</td>
 				   		<td>{{positon.description}}</td>
 				   		<td> 
-				   			<button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Изменить</button>
-				   			<button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-star" aria-hidden="true"></span>Удалить</button> 
+				   			<button type="button" class="btn btn-warning btn-sm"><span class="fa fa-pencil-alt red-icon" aria-hidden="true"></span></button>
+				   			<button type="button" class="btn btn-danger btn-sm" ng-confirm-click="Вы действительно хотите удалить запись ?" confirmed-click="pos.removePos(positon,$index)"><span class="fa fa-times-circle red-icon" aria-hidden="true"></span></button> 
 				   		</td>
 				   	</tr>
 				  </tbody>

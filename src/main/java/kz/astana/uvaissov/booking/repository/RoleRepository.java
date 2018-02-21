@@ -9,5 +9,6 @@ import kz.astana.uvaissov.booking.entity.Role;
 @Repository("roleRepository")
 public interface RoleRepository extends JpaRepository<Role, Integer>{
 	Role findByRole(String role);
+
 	
 }

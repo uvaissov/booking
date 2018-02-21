@@ -1,3 +1,7 @@
+/**
+ * Контроллер для управления должностями
+ * 
+ * */
 app.controller('Setting_PositionCtrl', Setting_PositionCtrl);
 
 function Setting_PositionCtrl ($http) {
@@ -16,13 +20,29 @@ function Setting_PositionCtrl ($http) {
 			.then(
 				       function(response){
 				    	   pos.positions.push(response.data);
+				    	    pos.type = 'list';
+				    	   pos.position = null;
 				       }, 
 				       function(response){
 				    	   console.log(response);
 				       }
 				    );
 	  	}
-  }
+  };
+
+  
+  pos.removePos = function(item,index){
+  		$http.delete('/setting/position/'+item.id, null)
+		.then(
+			       function(response){
+			    	   pos.getPosition();
+			       }, 
+			       function(response){
+			    	   console.log(response);
+			       }
+			    ); 
+  };
+  
   pos.getPosition = function(){
 	  $http.get('/setting/position', null)
 		.then(
@@ -34,6 +54,8 @@ function Setting_PositionCtrl ($http) {
 			       }
 			    ); 
   }
+  
+  // load positions
   pos.getPosition();
   
 };

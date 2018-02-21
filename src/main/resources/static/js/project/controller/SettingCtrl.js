@@ -11,8 +11,6 @@ function SettingCtrl() {
 		  set.pageUrl = settingPath+value.itemPage
 	  }
   });
-  
-  console.log(set.tabList);
   set.changeContent=function(item){
 	  angular.forEach(set.tabList, function(value) {
 		  if(value.active===true){

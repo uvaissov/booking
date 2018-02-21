@@ -2,12 +2,9 @@ package kz.astana.uvaissov.booking.controllerRest;
 
 import java.util.List;
 
-import org.apache.commons.httpclient.methods.RequestEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -49,7 +46,6 @@ public class PositionRestController {
 		//Position position = gson.getGson().fromJson(entity., Position.class);
 		position.setClientId(client.getId());
 		positionService.savePosition(position);
-		System.out.println(position.getId());
 		if (null == position.getId()) {
 			return new ResponseEntity("No Position found for ID ", HttpStatus.NOT_FOUND);
 		}
@@ -58,9 +54,10 @@ public class PositionRestController {
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity deletePosition(@PathVariable Long id) {
-		if (null == null) {
+		if (id == null) {
 			return new ResponseEntity("No Position found for ID " + id, HttpStatus.NOT_FOUND);
 		}
+		positionService.removePosition(id);
 		return new ResponseEntity(id, HttpStatus.OK);
 	}
 	

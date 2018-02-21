@@ -8,4 +8,5 @@ public interface PositionService {
 	public void savePosition(Position position);
 	public Position updatePosition(Position position);
 	public List<Position> findByClientId(Long clientId) ;
+	public void removePosition(Long id);
 }

@@ -32,5 +32,11 @@ public class PositionServiceImpl implements PositionService{
 	public Position updatePosition(Position position) {
 		return positionRepository.save(position);
 	}
+	
+	@Override
+	public void removePosition(Long id) {
+		positionRepository.deletePositionById(id);
+	}
+	
 
 }
