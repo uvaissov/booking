@@ -20,7 +20,7 @@ public class PositionServiceImpl implements PositionService{
 	
 	@Override
 	public List<Position> findByClientId(Long clientId) {
-		return positionRepository.findByClientId(clientId);
+		return positionRepository.findByClientIdOrderById(clientId);
 	}
 
 	@Override

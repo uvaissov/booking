@@ -13,7 +13,10 @@ import kz.astana.uvaissov.booking.entity.Position;
 
 @Repository("positionRepository")
 public interface PositionRepository extends JpaRepository<Position, Integer>{
-	List<Position> findByClientId(Long clientId);
+	
+	@Query("select p from Position p where p.clientId =? order by p.id")
+	List<Position> findByClientIdOrderById(Long clientId);
+	
 	@Transactional
 	void deletePositionById(Long id);
 }

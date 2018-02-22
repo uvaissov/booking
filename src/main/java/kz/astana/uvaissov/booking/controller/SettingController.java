@@ -53,12 +53,6 @@ public class SettingController {
 	public ModelAndView setting(@ModelAttribute("user") User user, HttpSession session) {
 
 		ModelAndView modelAndView = new ModelAndView();
-
-		System.out.println("userName:" + user.getName() + " " + user.getLastName());
-		for (Role role : user.getRoles()) {
-			System.out.println(role.getRole());
-		}
-
 		List<NavItem> navItems = new ArrayList<NavItem>();
 		navItems.add(new NavItem("Основная информация", "mainInfo_page", true, "left"));
 		navItems.add(new NavItem("Сотрудник", "employees_page", false, "left"));

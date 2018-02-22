@@ -32,14 +32,14 @@ public class WorkspaceController {
 	@Autowired
 	private ClientService clientService;
 	
-	@ModelAttribute("user")//Обьявим основной отрибут пользователя
+	@ModelAttribute("user")//Обьявим основной аттрибут пользователя
 	public User getUser() {
 		System.out.println("getUser()");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
 		return user;
 	}
-	@ModelAttribute("client")//Обьявим основной отрибут пользователя
+	@ModelAttribute("client")//Обьявим основной аттрибут клиента
 	public Client getClient(@ModelAttribute("user") User user) {
 		Client client = clientService.findClientByUser(user);
 		return client;
