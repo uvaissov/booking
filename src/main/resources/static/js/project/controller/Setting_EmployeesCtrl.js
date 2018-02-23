@@ -2,81 +2,81 @@
  * Контроллер для управления должностями
  * 
  */
-app.controller('Setting_PositionCtrl', Setting_PositionCtrl);
+app.controller('Setting_EmployeesCtrl', Setting_EmployeesCtrl);
 
-function Setting_PositionCtrl ($http) {
-  var pos = this; 
-  pos.type = 'list';
-  pos.switchContent=function(type){
-	  pos.position = null;
-	  pos.type = type;
+function Setting_EmployeesCtrl ($http) {
+  var emp = this; 
+  emp.type = 'list';
+  emp.switchContent=function(type){
+	  emp.position = null;
+	  emp.type = type;
   }
-  pos.message = null;
-  pos.positions = [];
+  emp.message = null;
+  emp.employees = [];
   
-  pos.addPosition = function(position){
-		if(	angular.isDefined(position) &&
-	  		angular.isDefined(position.name)){
-			if(angular.isDefined(position.id)){
+  emp.addEmp = function(employ){
+		if(	angular.isDefined(employ) &&
+	  		angular.isDefined(employ.name)){
+			if(angular.isDefined(employ.id)){
 				$http.put('/setting/position/'+position.id, position)
 				.then(
 					       function(response){
-					    	   pos.positions.push(response.data);
-					    	   pos.type = 'list';
-					    	   pos.getPosition();
+					    	   emp.employees.push(response.data);
+					    	   emp.type = 'list';
+					    	   emp.getPosition();
 					       }, 
 					       function(response){
 					    	   console.log(response);
-					    	   pos.message = response.message;
+					    	   emp.message = response.message;
 					       }
 					    );
 			} else {
-			$http.post('/setting/position', position)
+			$http.post('/setting/position', employ)
 			.then(
 				       function(response){
-				    	   pos.positions.push(response.data);
-				    	   pos.type = 'list';
+				    	   emp.employees.push(response.data);
+				    	   emp.type = 'list';
 				       }, 
 				       function(response){
 				    	   console.log(response);
-				    	   pos.message = response.message;
+				    	   emp.message = response.message;
 				       }
 				    );
 			}
 	  	}
   };
-  pos.updatePosition = function(position){
-	  pos.type = 'add';
-	  pos.position = position;
+  emp.updateEmp = function(employ){
+	  emp.type = 'add';
+	  emp.employ = employ;
   };
   
-  pos.removePos = function(item,index){
+  emp.removeEmp = function(item,index){
   		$http.delete('/setting/position/'+item.id, null)
 		.then(
 			       function(response){
-			    	   pos.getPosition();
+			    	   emp.getEmployees();
 			       }, 
 			       function(response){
 			    	   console.log(response);
-			    	   pos.message = response.message;
+			    	   emp.message = response.message;
 			       }
 			    ); 
   };
   
-  pos.getPosition = function(){
+  emp.getEmployees = function(){
 	  $http.get('/setting/position', null)
 		.then(
 			       function(response){
-			    	   pos.positions = response.data;
+			    	   emp.positions = response.data;
 			       }, 
 			       function(response){
 			    	   console.log(response);
-			    	   pos.message = response.message;
+			    	   emp.message = response.message;
 			       }
 			    ); 
   }
   
   // load positions
-  pos.getPosition();
+  emp.getEmployees();
   
 };
