@@ -6,6 +6,7 @@ app.controller('Setting_EmployeesCtrl', Setting_EmployeesCtrl);
 
 function Setting_EmployeesCtrl ($http) {
   var emp = this; 
+  var pointUrl = '/setting/employees';
   emp.type = 'list';
   emp.switchContent=function(type){
 	  emp.position = null;
@@ -18,7 +19,7 @@ function Setting_EmployeesCtrl ($http) {
 		if(	angular.isDefined(employ) &&
 	  		angular.isDefined(employ.name)){
 			if(angular.isDefined(employ.id)){
-				$http.put('/setting/position/'+position.id, position)
+				$http.put(pointUrl+'/'+employ.id, position)
 				.then(
 					       function(response){
 					    	   emp.employees.push(response.data);
@@ -31,7 +32,7 @@ function Setting_EmployeesCtrl ($http) {
 					       }
 					    );
 			} else {
-			$http.post('/setting/position', employ)
+			$http.post(pointUrl, employ)
 			.then(
 				       function(response){
 				    	   emp.employees.push(response.data);
@@ -51,7 +52,7 @@ function Setting_EmployeesCtrl ($http) {
   };
   
   emp.removeEmp = function(item,index){
-  		$http.delete('/setting/position/'+item.id, null)
+  		$http.delete(pointUrl+'/'+item.id, null)
 		.then(
 			       function(response){
 			    	   emp.getEmployees();
@@ -64,10 +65,10 @@ function Setting_EmployeesCtrl ($http) {
   };
   
   emp.getEmployees = function(){
-	  $http.get('/setting/position', null)
+	  $http.get(pointUrl, null)
 		.then(
 			       function(response){
-			    	   emp.positions = response.data;
+			    	   emp.employees = response.data;
 			       }, 
 			       function(response){
 			    	   console.log(response);

@@ -6,6 +6,7 @@ app.controller('Setting_PositionCtrl', Setting_PositionCtrl);
 
 function Setting_PositionCtrl ($http) {
   var pos = this; 
+  var pointUrl = '/setting/position';
   pos.type = 'list';
   pos.switchContent=function(type){
 	  pos.position = null;
@@ -18,7 +19,7 @@ function Setting_PositionCtrl ($http) {
 		if(	angular.isDefined(position) &&
 	  		angular.isDefined(position.name)){
 			if(angular.isDefined(position.id)){
-				$http.put('/setting/position/'+position.id, position)
+				$http.put(pointUrl+'/'+position.id, position)
 				.then(
 					       function(response){
 					    	   pos.positions.push(response.data);
@@ -31,7 +32,7 @@ function Setting_PositionCtrl ($http) {
 					       }
 					    );
 			} else {
-			$http.post('/setting/position', position)
+			$http.post(pointUrl, position)
 			.then(
 				       function(response){
 				    	   pos.positions.push(response.data);
@@ -51,7 +52,7 @@ function Setting_PositionCtrl ($http) {
   };
   
   pos.removePos = function(item,index){
-  		$http.delete('/setting/position/'+item.id, null)
+  		$http.delete(pointUrl+'/'+item.id, null)
 		.then(
 			       function(response){
 			    	   pos.getPosition();
@@ -64,7 +65,7 @@ function Setting_PositionCtrl ($http) {
   };
   
   pos.getPosition = function(){
-	  $http.get('/setting/position', null)
+	  $http.get(pointUrl, null)
 		.then(
 			       function(response){
 			    	   pos.positions = response.data;

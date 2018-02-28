@@ -45,9 +45,6 @@ public class SettingController {
 
 	@Autowired
 	private PositionService positionService;
-	
-	@Autowired
-	private GsonHttp gson;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView setting(@ModelAttribute("user") User user, HttpSession session) {
