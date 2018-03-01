@@ -44,7 +44,7 @@ public class EmployeesRestController {
 	@PostMapping
 	public ResponseEntity addPosition(@ModelAttribute("client") Client client, @RequestBody Employees emp) {
 		emp.setClientId(client.getId());
-		employeeService.save(emp);
+		employeeService.save(emp,emp.getPosition());
 		if (null == emp.getId()) {
 			return new ResponseEntity("No Employees found for ID ", HttpStatus.NOT_FOUND);
 		}

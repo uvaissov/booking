@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -26,8 +27,8 @@ public class Employees {
 	@Column(name="client_id")
 	private Long clientId;
 	
-	@Column(name="fitstName")
-	private String fitstName;
+	@Column(name="firstname")
+	private String firstName;
 	
 	@Column(name="surname")
 	private String surname;
@@ -38,8 +39,9 @@ public class Employees {
 	@Column(name="phone")
 	private Long phone;
 	
-	@Column(name="position_id")
-	private Long position_id;
+	@ManyToOne(cascade =CascadeType.ALL)
+	@JoinColumn(name="position_id")
+	private Position position;
 	
 	@Column(name="description")
 	private String description;
@@ -64,12 +66,13 @@ public class Employees {
 		this.clientId = clientId;
 	}
 
-	public String getFitstName() {
-		return fitstName;
+
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFitstName(String fitstName) {
-		this.fitstName = fitstName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getSurname() {
@@ -96,12 +99,12 @@ public class Employees {
 		this.phone = phone;
 	}
 
-	public Long getPosition_id() {
-		return position_id;
+	public Position getPosition() {
+		return position;
 	}
 
-	public void setPosition_id(Long position_id) {
-		this.position_id = position_id;
+	public void setPosition(Position position) {
+		this.position = position;
 	}
 
 	public String getDescription() {

@@ -1,7 +1,7 @@
 CREATE TABLE "public"."employees" (
 	emp_id bigserial NOT NULL,
 	client_id int8 NOT NULL,
-	fitstName varchar(250) NOT NULL,
+	firstName varchar(250) NOT NULL,
 	surname varchar(250),
 	patronymic varchar(250),
 	phone int8,

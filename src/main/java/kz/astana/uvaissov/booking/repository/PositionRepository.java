@@ -19,4 +19,5 @@ public interface PositionRepository extends JpaRepository<Position, Integer>{
 	
 	@Transactional
 	void deletePositionById(Long id);
+	Position findById(Long id);
 }

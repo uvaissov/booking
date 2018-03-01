@@ -17,10 +17,10 @@ public class BookingApplication {
 		SpringApplication.run(BookingApplication.class, args);
 	}
 	
-	 @Bean
-	    CommandLineRunner init(StorageService storageService) {
+	@Bean
+	CommandLineRunner init(StorageService storageService) {
 	        return (args) -> {
-	            storageService.deleteAll();
+	            //storageService.deleteAll();
 	            storageService.init();
 	        };
 	    }
