@@ -104,7 +104,7 @@ function Setting_EmployeesCtrl ($http,$q) {
 	  $http.get('/setting/branch', null)
 		.then(
 			       function(response){
-			    	   emp.positions =response.data;
+			    	   emp.branches=response.data;
 			       }, 
 			       function(response){
 			    	   console.log(response);

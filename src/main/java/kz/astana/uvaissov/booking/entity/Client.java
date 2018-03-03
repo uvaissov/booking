@@ -26,6 +26,8 @@ public class Client {
 	@Column(name="regDate")
 	private Timestamp regDate;
 	
+	
+	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "clients_user_ref", joinColumns = @JoinColumn(name = "client_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private Set<User> users;
