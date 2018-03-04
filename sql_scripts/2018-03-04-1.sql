@@ -1,0 +1,1 @@
+ALTER TABLE "public".clients ADD CONSTRAINT clients_client_info_fk FOREIGN KEY (info_id) REFERENCES "public".client_info(info_id) ON DELETE RESTRICT ON UPDATE RESTRICT ;

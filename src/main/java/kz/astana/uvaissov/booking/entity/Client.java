@@ -25,6 +25,8 @@ public class Client {
 	private String name;
 	@Column(name="regDate")
 	private Timestamp regDate;
+	@Column(name="info_id")
+	private ClientInfo info;
 	
 	
 	
