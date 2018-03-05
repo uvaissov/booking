@@ -10,35 +10,45 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kz.astana.uvaissov.booking.entity.Branch;
+import kz.astana.uvaissov.booking.entity.Employees;
+import kz.astana.uvaissov.booking.entity.Position;
 import kz.astana.uvaissov.booking.repository.BranchRepository;
+import kz.astana.uvaissov.booking.repository.EmployeesRepository;
+import kz.astana.uvaissov.booking.repository.PositionRepository;
 
-@Service("branchService")
-public class EmployeesServiceImpl implements BranchService{
+@Service("employeesService")
+public class EmployeesServiceImpl implements EmployeesService{
 
 	@Autowired
-	private BranchRepository branchRepository;
+	private EmployeesRepository employeesRepository;
+	
+	@Autowired
+	private PositionRepository positionRepository;
 	
 	@PersistenceContext
 	private EntityManager em;
 	
 	@Override
-	public List<Branch> findByClientId(Long clientId) {
-		return branchRepository.findByClientIdOrderById(clientId);
+	public List<Employees> findByClientId(Long clientId) {
+		return employeesRepository.findByClientIdOrderById(clientId);
 	}
 
 	@Override
-	public void save(Branch branch) {
-		branchRepository.save(branch);
+	public void save(Employees emp, Position position) {
+		if(position!=null)
+			position = positionRepository.findById(position.getId());
+		emp.setPosition(position);
+		employeesRepository.save(emp);
 		
 	}
 	@Override
-	public Branch update(Branch branch) {
-		return branchRepository.save(branch);
+	public Employees update(Employees emp) {
+		return employeesRepository.save(emp);
 	}
 	
 	@Override
 	public void remove(Long id) {
-		branchRepository.deleteById(id);
+		employeesRepository.deleteEmployeesById(id);
 	}
 	
 

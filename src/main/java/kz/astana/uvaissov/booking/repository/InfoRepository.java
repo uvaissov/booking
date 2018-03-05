@@ -9,6 +9,6 @@ import kz.astana.uvaissov.booking.entity.User;
 
 
 @Repository("infoRepository")
-public interface InfoRepository extends JpaRepository<ClientInfo, Integer>{
+public interface InfoRepository extends JpaRepository<ClientInfo, Long>{
 	ClientInfo findByInfoId(Long id);
 }

@@ -9,47 +9,43 @@ import javax.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kz.astana.uvaissov.booking.entity.Branch;
 import kz.astana.uvaissov.booking.entity.Client;
 import kz.astana.uvaissov.booking.entity.Employees;
 import kz.astana.uvaissov.booking.entity.Position;
 import kz.astana.uvaissov.booking.entity.User;
+import kz.astana.uvaissov.booking.repository.BranchRepository;
 import kz.astana.uvaissov.booking.repository.ClientRepository;
 import kz.astana.uvaissov.booking.repository.EmployeesRepository;
-import kz.astana.uvaissov.booking.repository.PositionRepository;
 
-@Service("employeesService")
-public class BranchServiceImpl implements EmployeesService{
+
+@Service("branchService")
+public class BranchServiceImpl implements BranchService{
 
 	@Autowired
-	private EmployeesRepository employeesRepository;
-	
-	@Autowired
-	private PositionRepository positionRepository;
+	private BranchRepository branchRepository;
 	
 	@PersistenceContext
 	private EntityManager em;
 	
 	@Override
-	public List<Employees> findByClientId(Long clientId) {
-		return employeesRepository.findByClientIdOrderById(clientId);
+	public List<Branch> findByClientId(Long clientId) {
+		return branchRepository.findByClientIdOrderById(clientId);
 	}
 
 	@Override
-	public void save(Employees emp, Position position) {
-		if(position!=null)
-			position = positionRepository.findById(position.getId());
-		emp.setPosition(position);
-		employeesRepository.save(emp);
+	public void save(Branch branch) {
+		branchRepository.save(branch);
 		
 	}
 	@Override
-	public Employees update(Employees emp) {
-		return employeesRepository.save(emp);
+	public Branch update(Branch branch) {
+		return branchRepository.save(branch);
 	}
 	
 	@Override
 	public void remove(Long id) {
-		employeesRepository.deleteEmployeesById(id);
+		branchRepository.deleteById(id);
 	}
 	
 

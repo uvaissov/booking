@@ -14,7 +14,7 @@ import kz.astana.uvaissov.booking.entity.Position;
 
 
 @Repository("branchRepository")
-public interface BranchRepository extends JpaRepository<Branch, Integer>{
+public interface BranchRepository extends JpaRepository<Branch, Long>{
 	
 	@Query("select b from Branch b where b.clientId =? order by b.id")
 	List<Branch> findByClientIdOrderById(Long clientId);
