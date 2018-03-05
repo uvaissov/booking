@@ -1,5 +1,5 @@
 CREATE TABLE "public".dict_country (
-	country_id bigserial NOT NULL,
+	country_id int8 NOT NULL,
 	code varchar(3) NULL,
 	abbr varchar(3) NULL,
 	name varchar(100) NOT null,
@@ -10,7 +10,7 @@ WITH (
 ) ;
 
 CREATE TABLE "public".dict_city (
-	city_id bigserial NOT NULL,
+	city_id int8 NOT NULL,
 	country_id int8 not null,
 	"name" varchar(100) NOT null,
 	PRIMARY KEY (city_id),
