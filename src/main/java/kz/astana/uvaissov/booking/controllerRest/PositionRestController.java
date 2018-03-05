@@ -28,9 +28,6 @@ import kz.astana.uvaissov.booking.service.UserService;
 public class PositionRestController {
 	
 	@Autowired
-	private UserService userService;
-
-	@Autowired
 	private PositionService positionService;
 	
 	@Autowired

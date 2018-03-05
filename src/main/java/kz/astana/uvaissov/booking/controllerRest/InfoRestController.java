@@ -1,13 +1,10 @@
 package kz.astana.uvaissov.booking.controllerRest;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,16 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import kz.astana.uvaissov.booking.entity.Branch;
 import kz.astana.uvaissov.booking.entity.Client;
 import kz.astana.uvaissov.booking.entity.ClientInfo;
-import kz.astana.uvaissov.booking.entity.Position;
 import kz.astana.uvaissov.booking.repository.GsonHttp;
-import kz.astana.uvaissov.booking.service.BranchService;
 import kz.astana.uvaissov.booking.service.ClientService;
 import kz.astana.uvaissov.booking.service.InfoService;
-import kz.astana.uvaissov.booking.service.PositionService;
-import kz.astana.uvaissov.booking.service.UserService;
 
 @RestController()
 @SessionAttributes({"user","client"})

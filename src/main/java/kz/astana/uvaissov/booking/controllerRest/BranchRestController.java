@@ -32,9 +32,6 @@ public class BranchRestController {
 	@Autowired
 	private BranchService branchService;
 	
-	@Autowired
-	private GsonHttp gson;
-	
 	@GetMapping
 	public List<Branch> getBranches(@ModelAttribute("client") Client client){
 		return branchService.findByClientId(client.getId());

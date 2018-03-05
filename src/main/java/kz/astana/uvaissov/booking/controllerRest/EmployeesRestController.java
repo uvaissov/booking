@@ -28,13 +28,7 @@ import kz.astana.uvaissov.booking.service.UserService;
 public class EmployeesRestController {
 	
 	@Autowired
-	private UserService userService;
-
-	@Autowired
 	private EmployeesService employeeService;
-	
-	@Autowired
-	private GsonHttp gson;
 	
 	@GetMapping
 	public List<Employees> getEmployees(@ModelAttribute("client") Client client){
