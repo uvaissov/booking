@@ -1,8 +1,9 @@
 package kz.astana.uvaissov.booking.entity;
 
-import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
+
+
+import java.sql.Date;
 
 
 /**
@@ -12,15 +13,16 @@ import java.util.Date;
 @Entity
 @Table(name="client_info")
 @NamedQuery(name="ClientInfo.findAll", query="SELECT c FROM ClientInfo c")
-public class ClientInfo implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class ClientInfo {
 
 	@Id
 	@Column(name="info_id")
 	private Long infoId;
-
+	
+	@Column(name="apt")
 	private String apt;
-
+	
+	@Column(name="bik")
 	private String bik;
 
 	@Column(name="ceo_firstname")
@@ -31,33 +33,41 @@ public class ClientInfo implements Serializable {
 
 	@Column(name="ceo_surname")
 	private String ceoSurname;
-
-	@Column(name="city_id")
+	
+	@ManyToOne(cascade =CascadeType.ALL)
+	@JoinColumn(name="city_id")
 	private DictCity city;
-
-	@Column(name="country_id")
+	
+	@ManyToOne(cascade =CascadeType.ALL)
+	@JoinColumn(name="country_id")
 	private DictCountry country;
-
+	
+	@Column(name="home")
 	private String home;
-
+	
+	@Column(name="iik")
 	private String iik;
 
 	@Column(name="iin_bin")
 	private String iinBin;
-
-	@Temporal(TemporalType.DATE)
+	
+	@Basic
 	@Column(name="license_date")
-	private Date licenseDate;
+	private Date  licenseDate;
 
 	@Column(name="license_num")
 	private String licenseNum;
-
+	
+	@Column(name="name")
 	private String name;
+	
+	@Column(name="phone")
+	private String phone;
 
-	private Integer phone;
+	@Column(name="prefix")
+	private String prefix;
 
-	private Integer prefix;
-
+	@Column(name="street")
 	private String street;
 
 	public ClientInfo() {
@@ -175,19 +185,19 @@ public class ClientInfo implements Serializable {
 		this.name = name;
 	}
 
-	public Integer getPhone() {
+	public String getPhone() {
 		return this.phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-	public Integer getPrefix() {
+	public String getPrefix() {
 		return this.prefix;
 	}
 
-	public void setPrefix(Integer prefix) {
+	public void setPrefix(String prefix) {
 		this.prefix = prefix;
 	}
 

@@ -17,5 +17,4 @@ app.directive('ngConfirmClick', [
 }])
 $(document).ready(function(){
 	$("#preloader").hide();
-	$('select').multipleSelect();
 });

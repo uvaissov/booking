@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-9">
 			<form name="FormMainInfo" novalidate
-				ng-submit="pos.addPosition(pos.position)">
+				ng-submit="mainInfo.saveInfo(mainInfo.info)">
 				<div class="form-group form-row">
 					<label for="inputName" class="col-md-2 col-form-label">Наименование</label>
 					<div class="col-md-7">
@@ -14,23 +14,25 @@
 					<label class="col-md-1  col-form-label" for="inputCountry">Страна</label>
 					<div class=" col-md-3">
 						<select id="inputCountry" class="form-control">
-							<option selected>Казахстан</option>
-							<option>Россия</option>
 						</select>
 					</div>
 					<label class="col-md-1  col-form-label" for="inputState">Город</label>
 					<div class=" col-md-4">
 						<select id="inputState" class="form-control">
-							<option selected>Астана</option>
-							<option>Алматы</option>
 						</select>
 					</div>
 
 				</div>
 				<div class="form-group form-row">
 					<label class="col-md-1 col-form-label" for="inputAdress">Адрес</label>
-					<div class=" col-md-8">
-						<input type="text" class="form-control" id="inputAdress">
+					<div class=" col-md-5">
+						<input type="text" class="form-control" id="inputAdress" ng-model="mainInfo.info.street">
+					</div>
+					<div class=" col-md-2">
+						<input type="text" class="form-control" id="inputAdress" ng-model="mainInfo.info.home">
+					</div>
+					<div class=" col-md-1">
+						<input type="text" class="form-control" id="inputAdress" ng-model="mainInfo.info.home">
 					</div>
 				</div>
 				<h6>Информация о руководителе</h6>
@@ -38,18 +40,18 @@
 					<label for="inputLastname" class="col-md-1 col-form-label">Фамилия</label>
 					<div class="col-md-2">
 						<input class="form-control" type="text"
-							ng-model="mainInfo.info.lastName" id="inputLastname">
+							ng-model="mainInfo.info.ceoSurname" id="inputLastname">
 					</div>
 					<label for="inputFirstName" class="col-md-1 col-form-label">Имя</label>
 					<div class="col-md-2">
 						<input class="form-control" type="text"
-							ng-model="mainInfo.info.firstName" id="inputFirstName">
+							ng-model="mainInfo.info.ceoFirstname" id="inputFirstName">
 					</div>
 
 					<label for="inputSubName" class="col-md-1 col-form-label">Отчество</label>
 					<div class="col-md-2">
 						<input class="form-control" type="text"
-							ng-model="mainInfo.info.subName" id="inputSubName">
+							ng-model="mainInfo.info.ceoPatronymic" id="inputSubName">
 					</div>
 
 				</div>
@@ -71,12 +73,12 @@
 					<label for="inputBik" class="col-md-1 col-form-label">БИК</label>
 					<div class="col-md-2">
 						<input class="form-control" type="text"
-							ng-model="mainInfo.info.bank.bik" id="inputBik">
+							ng-model="mainInfo.info.bik" id="inputBik">
 					</div>
 					<label for="inputIik" class="col-md-1 col-form-label">ИИК</label>
 					<div class="col-md-2">
 						<input class="form-control" type="text"
-							ng-model="mainInfo.info.bank.iik" id="inputIik">
+							ng-model="mainInfo.info.iik" id="inputIik">
 					</div>
 				</div>
 				<h6>Информация о организации</h6>
@@ -89,7 +91,7 @@
 					<label for="inputiinBin" class="col-md-1 col-form-label">ИИН/БИН</label>
 					<div class="col-md-2">
 						<input class="form-control" type="text"
-							ng-model="mainInfo.info.bank.iinBin" id="inputiinBin">
+							ng-model="mainInfo.info.iinBin" id="inputiinBin">
 					</div>
 
 				</div>
@@ -98,13 +100,13 @@
 						№</label>
 					<div class="col-md-2">
 						<input class="form-control" type="text"
-							ng-model="mainInfo.info.licNum" id="inputLicenseNum">
+							ng-model="mainInfo.info.licenseNum" id="inputLicenseNum">
 					</div>
 					<label for="inputLicenseDate" class="col-md-1 col-form-label">Лицензия
 						выдана</label>
 					<div class="col-md-2">
 						<input class="form-control" type="text"
-							ng-model="mainInfo.info.licDate" id="inputLicenseDate">
+							ng-model="mainInfo.info.licenseDate" id="inputLicenseDate">
 					</div>
 				</div>
 				<button class="btn btn-primary disabled" type="submit"

@@ -37,11 +37,8 @@ public class InfoRestController {
 	
 	@GetMapping
 	public ClientInfo getInfo(@ModelAttribute("client") Client client){
-		if(client.getInfoId()!=null) {
-			return infoService.findByInfoId(client.getInfoId());
-		}
-		return null;
-		
+		System.out.println("infoId:"+client.getInfoId());
+		return infoService.findByInfoId(client.getInfoId());
 	}
 	
 	@PostMapping

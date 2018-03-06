@@ -3,7 +3,6 @@
  * 
  */
 app.controller('Setting_EmployeesCtrl',['$http','$q', Setting_EmployeesCtrl]);
-
 function Setting_EmployeesCtrl ($http,$q) {
   var emp = this; 
   var pointUrl = '/setting/employees';

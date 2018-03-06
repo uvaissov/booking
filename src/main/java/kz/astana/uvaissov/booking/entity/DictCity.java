@@ -11,9 +11,8 @@ import javax.persistence.*;
 @Entity
 @Table(name="dict_city")
 @NamedQuery(name="DictCity.findAll", query="SELECT d FROM DictCity d")
-public class DictCity implements Serializable {
-	private static final long serialVersionUID = 1L;
-
+public class DictCity {
+ 
 	@Id
 	@Column(name="city_id")
 	private Long cityId;
