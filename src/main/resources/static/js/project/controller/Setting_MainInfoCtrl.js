@@ -36,6 +36,35 @@ function Setting_MainInfoCtrl ($http) {
 			}
 	  	}
   };
+  
+  mainInfo.getCountry = function(){
+	  $http.get('/dictionary/country', null)
+		.then(
+			       function(response){
+			    	   mainInfo.country =response.data;
+			       }, 
+			       function(response){
+			    	   console.log(response);
+			    	   mainInfo.message = response.message;
+			       }
+			    ); 
+	  
+  };
+  
+  mainInfo.getCity = function(countyId){
+	  if(angular.isDefined(countyId)){
+	  $http.get('/dictionary/city/'+countyId, null)
+		.then(
+			       function(response){
+			    	   mainInfo.city =response.data;
+			       }, 
+			       function(response){
+			    	   console.log(response);
+			    	   mainInfo.message = response.message;
+			       }
+			    ); 
+	  }
+  };
  
   
   mainInfo.getInfo = function(){
@@ -43,6 +72,11 @@ function Setting_MainInfoCtrl ($http) {
 		.then(
 			       function(response){
 			    	   mainInfo.info = response.data;
+			    	   //console.log(mainInfo.info);
+			    	   if(angular.isDefined(mainInfo.info) 
+			    			   && angular.isDefined(mainInfo.info.country) ) {
+			    	   		mainInfo.getCity(mainInfo.info.country.countryId);
+			    	   }
 			       }, 
 			       function(response){
 			    	   console.log(response);

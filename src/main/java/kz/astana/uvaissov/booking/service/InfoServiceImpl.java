@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kz.astana.uvaissov.booking.entity.ClientInfo;
+import kz.astana.uvaissov.booking.entity.DictCity;
+import kz.astana.uvaissov.booking.entity.DictCountry;
 import kz.astana.uvaissov.booking.repository.InfoRepository;
 
 @Service("infoService")
@@ -29,7 +31,12 @@ public class InfoServiceImpl implements InfoService{
 
 	@Override
 	public void save(ClientInfo info) {
-		em.refresh(info.getCity());
+		if(info.getCity()!=null) {
+			info.setCity(em.find(DictCity.class, info.getCity().getCityId()));
+		}
+		if(info.getCountry()!=null) {
+			info.setCountry(em.find(DictCountry.class, info.getCountry().getCountryId()));
+		}
 		em.refresh(info.getCountry());
 		infoRepository.save(info);
 		
@@ -39,6 +46,4 @@ public class InfoServiceImpl implements InfoService{
 		return infoRepository.save(emp);
 	}
 	
-	
-
 }

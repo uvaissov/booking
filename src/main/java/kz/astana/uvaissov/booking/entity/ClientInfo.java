@@ -69,6 +69,9 @@ public class ClientInfo {
 
 	@Column(name="street")
 	private String street;
+	
+	@Column(name="bankname")
+	private String bankName;
 
 	public ClientInfo() {
 	}
@@ -207,6 +210,14 @@ public class ClientInfo {
 
 	public void setStreet(String street) {
 		this.street = street;
+	}
+
+	public String getBankName() {
+		return bankName;
+	}
+
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
 	}
 
 }

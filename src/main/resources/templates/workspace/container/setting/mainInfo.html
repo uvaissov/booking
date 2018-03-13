@@ -1,27 +1,22 @@
 <div ng-controller="Setting_MainInfoCtrl as mainInfo">
 	<div class="row">
 		<div class="col-md-9">
-			<form name="FormMainInfo" novalidate
-				ng-submit="mainInfo.saveInfo(mainInfo.info)">
+			<form name="FormMainInfo" novalidate ng-submit="mainInfo.saveInfo(mainInfo.info)">
 				<div class="form-group form-row">
 					<label for="inputName" class="col-md-2 col-form-label">Наименование</label>
 					<div class="col-md-7">
-						<input class="form-control" type="text"
-							ng-model="mainInfo.info.name" id="inputName">
+						<input class="form-control" type="text" ng-model="mainInfo.info.name" id="inputName">
 					</div>
 				</div>
 				<div class="form-group form-row">
 					<label class="col-md-1  col-form-label" for="inputCountry">Страна</label>
 					<div class=" col-md-3">
-						<select id="inputCountry" class="form-control">
-						</select>
+						<select ng-init="mainInfo.getCountry()" id="inputCountry" class="form-control" ng-model="mainInfo.info.country" ng-options="country.name+ ' ('+country.abbr+')' for country in mainInfo.country track by country.countryId" ng-change="mainInfo.getCity(mainInfo.info.country.countryId)"/>
 					</div>
 					<label class="col-md-1  col-form-label" for="inputState">Город</label>
 					<div class=" col-md-4">
-						<select id="inputState" class="form-control">
-						</select>
+						<select  id="inputState" class="form-control" ng-model="mainInfo.info.city" ng-options="city.name for city in mainInfo.city track by city.cityId"/>
 					</div>
-
 				</div>
 				<div class="form-group form-row">
 					<label class="col-md-1 col-form-label" for="inputAdress">Адрес</label>
@@ -44,14 +39,12 @@
 					</div>
 					<label for="inputFirstName" class="col-md-1 col-form-label">Имя</label>
 					<div class="col-md-2">
-						<input class="form-control" type="text"
-							ng-model="mainInfo.info.ceoFirstname" id="inputFirstName">
+						<input class="form-control" type="text" ng-model="mainInfo.info.ceoFirstname" id="inputFirstName">
 					</div>
 
 					<label for="inputSubName" class="col-md-1 col-form-label">Отчество</label>
 					<div class="col-md-2">
-						<input class="form-control" type="text"
-							ng-model="mainInfo.info.ceoPatronymic" id="inputSubName">
+						<input class="form-control" type="text" ng-model="mainInfo.info.ceoPatronymic" id="inputSubName">
 					</div>
 
 				</div>
@@ -59,21 +52,18 @@
 					<label for="inputBirthDay" class="col-md-1 col-form-label">Дата
 						рождения</label>
 					<div class="col-md-2">
-						<input class="form-control" type="text"
-							ng-model="mainInfo.info.birthDay" id="inputBirthDay">
+						<input class="form-control" type="text" ng-model="mainInfo.info.birthDay" id="inputBirthDay">
 					</div>
 				</div>
 				<h6>Банковские реквезиты</h6>
 				<div class="form-group form-row">
 					<label for="inputBank" class="col-md-1 col-form-label">Банк</label>
 					<div class="col-md-2">
-						<input class="form-control" type="text"
-							ng-model="mainInfo.info.bank.name" id="inputBank">
+						<input class="form-control" type="text"	ng-model="mainInfo.info.bankName" id="inputBank">
 					</div>
 					<label for="inputBik" class="col-md-1 col-form-label">БИК</label>
 					<div class="col-md-2">
-						<input class="form-control" type="text"
-							ng-model="mainInfo.info.bik" id="inputBik">
+						<input class="form-control" type="text"	ng-model="mainInfo.info.bik" id="inputBik">
 					</div>
 					<label for="inputIik" class="col-md-1 col-form-label">ИИК</label>
 					<div class="col-md-2">
