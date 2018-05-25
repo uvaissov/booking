@@ -4,7 +4,7 @@ import org.springframework.stereotype.Repository;
 
 import com.google.gson.Gson;
 
-@Repository
+@Repository("gsonHttp")
 public class GsonHttp {
 
     private Gson gson;
